@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="background-color">
+    <div class="container">
+    <div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                <img class="banner" src="~/Content/themes/base/images/banner.jpg" />
+            </th>
+        </tr>
+    </table>
+    </div>
+    
+        <div class="nav-container">
+        <div class="table-responsive">
+            <table class="nav table">
+                <nav class="navbar navbar-default" role="navigation">
+
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <br />
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        @Html.ActionLink("Directory", "Index") |
+                        @Html.ActionLink("Login", "Login")
+                        <br />
+                        <br />
+                        <br />
+
+                    </div>
+                    <!-- /.navbar-collapse -->
+
+                </nav>
+            </table>
+        </div>
+    </div>
+
+    @RenderBody()
+
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/bootstrap/bootstrap.min.js"></script>
+    @RenderSection("scripts", required: false)
+        </div>
+</body>
+</html>
+

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="directory_dbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="directory_dbModelStoreContainer">
+          <EntitySet Name="DBUser" EntityType="directory_dbModel.Store.DBUser" store:Type="Tables" Schema="aaron" />
+          <EntitySet Name="Organization" EntityType="directory_dbModel.Store.Organization" store:Type="Tables" Schema="aaron" />
+        </EntityContainer>
+        <EntityType Name="DBUser">
+          <Key>
+            <PropertyRef Name="userName" />
+          </Key>
+          <Property Name="userName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="password" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="companyName" Type="varchar" MaxLength="50" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="lastName" Type="varchar" MaxLength="50" />
+          <Property Name="firstName" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar" MaxLength="50" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="province" Type="varchar" MaxLength="50" />
+          <Property Name="country" Type="varchar" MaxLength="50" />
+          <Property Name="postalCode" Type="varchar" MaxLength="50" />
+          <Property Name="latitude" Type="varchar" MaxLength="50" />
+          <Property Name="longitude" Type="varchar" MaxLength="50" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="directory_dbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="directory_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DBUsers" EntityType="directory_dbModel.DBUser" />
+          <EntitySet Name="Organizations" EntityType="directory_dbModel.Organization" />
+        </EntityContainer>
+        <EntityType Name="DBUser">
+          <Key>
+            <PropertyRef Name="userName" />
+          </Key>
+          <Property Name="userName" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="password" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="companyName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="firstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="phone" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="address" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="city" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="province" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="country" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="postalCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="latitude" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="longitude" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="directory_dbModelStoreContainer" CdmEntityContainer="directory_dbEntities">
+          <EntitySetMapping Name="DBUsers">
+            <EntityTypeMapping TypeName="directory_dbModel.DBUser">
+              <MappingFragment StoreEntitySet="DBUser">
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organizations">
+            <EntityTypeMapping TypeName="directory_dbModel.Organization">
+              <MappingFragment StoreEntitySet="Organization">
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

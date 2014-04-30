@@ -1,0 +1,99 @@
+﻿@model PagedList.IPagedList<MvcApplication2.Organization>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+@{
+   if(HttpContext.Current.Session["sessionID"] == "true"){
+       
+       Layout = "~/Views/Shared/_Layout_LoggedIn.cshtml";
+   }
+   else{
+       Layout = "~/Views/Shared/_Layout.cshtml";
+   }
+
+}
+
+
+
+@using (Html.BeginForm())
+{
+    <p class="col-xs-12 col-md-8 search">
+    @Html.TextBox("SearchString")  
+    <input type="submit" value="Search" />
+    </p>
+}
+
+<div class="index-container">
+
+<div class="table-responsive">
+<table class="index-table table">
+    <tr class="header">
+        <th class="org1">@Html.ActionLink("Organization", "Index", new { sortOrder = ViewBag.NameSortParm })</th>
+
+        <th class="contact1">@Html.ActionLink("Contact Name", "Index", new { sortOrder = ViewBag.NameSortParm })</th>
+
+        <th class="address1">@Html.ActionLink("Address", "Index", new { sortOrder = ViewBag.NameSortParm })</th>
+
+        <th class="city1">@Html.ActionLink("City", "Index", new { sortOrder = ViewBag.NameSortParm })</th>
+
+        <th class="province1">@Html.ActionLink("Province", "Index", new { sortOrder = ViewBag.NameSortParm })</th>
+
+        <th class="country1">@Html.ActionLink("Country", "Index", new { sortOrder = ViewBag.NameSortParm })</th>
+
+
+        <th class="map1"></th>
+        <th class="map1"></th>
+
+        
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td class="org1">
+            @Html.DisplayFor(modelItem => item.companyName)
+        </td>
+        <td class="contact1">
+            @Html.DisplayFor(modelItem => item.firstName)
+            @Html.DisplayFor(modelItem => item.lastName)
+        </td>
+        <td class="address1">
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td class="city1">
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td class="province1">
+            @Html.DisplayFor(modelItem => item.province)
+        </td>
+        <td class="country1">
+            @Html.DisplayFor(modelItem => item.country)
+        </td>
+
+        <td class="map1">
+            @Html.ActionLink("See Map", "Detail", new { id = item.id }) 
+        </td>
+        
+        @{if (HttpContext.Current.Session["sessionID"] == "true")
+        {
+            <td class="map1">
+                <a class="remove" href="@Url.Action("Remove", "Admin", new { id = item.id })" title="Remove" >Remove</a>  
+            </td>
+        }
+}
+
+        
+    </tr>
+}
+
+</table>
+</div>
+</div>
+
+
+    <div class="pagination">
+<div class="movePage">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", 
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div></div>

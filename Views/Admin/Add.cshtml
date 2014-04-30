@@ -1,0 +1,186 @@
+﻿@model MvcApplication2.Organization
+
+@{
+   if(HttpContext.Current.Session["sessionID"] == "true"){
+       
+       Layout = "~/Views/Shared/_Layout_LoggedIn.cshtml";
+   }
+   else{
+       Layout = "~/Views/Shared/_Layout.cshtml";
+   }
+}
+
+
+@using (Html.BeginForm("Add", "Admin", FormMethod.Post)) {
+    @Html.ValidationSummary(true)
+    <script src="~/Scripts/maps.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAJGpIecodaK-ym4xP9uUd2pEvgrbtcDhs&sensor=false"></script>
+
+    <legend class="title">Business Entry</legend>
+    <fieldset>
+        
+        <div class="field">
+
+        <div class="table-responsive table-detail">
+        <table class="table-detail table">
+
+
+        <tr>
+        <th class="org-detail">
+        <div class="editor-label">
+            Company Name: 
+        </div>
+        </th>
+        <td class="data">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.companyName)
+            @Html.ValidationMessageFor(model => model.companyName)
+        </div>
+        </td>
+        </tr>
+
+        <tr>
+        <th class="org-detail">
+        <div class="editor-label">
+            Contact Last Name: 
+        </div>
+        </th>
+        <td class="data">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.lastName)
+            @Html.ValidationMessageFor(model => model.lastName)
+        </div>
+        </td>
+        </tr>
+
+        <tr>
+        <th class="org-detail">
+        <div class="editor-label">
+            Contact First Name: 
+        </div>
+        </th>
+        <td class="data">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.firstName)
+            @Html.ValidationMessageFor(model => model.firstName)
+        </div>
+        </td>
+        </tr>
+
+        <tr>
+        <th class="org-detail">
+        <div class="editor-label">
+            Contact Phone: 
+        </div>
+        </th>
+        <td class="data">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phone)
+            @Html.ValidationMessageFor(model => model.phone)
+        </div>
+        </td>
+        </tr>
+
+        <tr>
+        <th class="org-detail">
+        <div class="editor-label">
+            Street Address: 
+        </div>
+        </th>
+        <td class="data">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.address)
+            @Html.ValidationMessageFor(model => model.address)
+        </div>
+        </td>
+        </tr>
+
+        <tr>
+        <th class="org-detail">
+        <div class="editor-label">
+            City: 
+        </div>
+        </th>
+        <td class="data">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.city)
+            @Html.ValidationMessageFor(model => model.city)
+        </div>
+        </td>
+        </tr>
+
+        <tr>
+        <th class="org-detail">
+        <div class="editor-label">
+            Province/State: 
+        </div>
+        </th>
+        <td class="data">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.province)
+            @Html.ValidationMessageFor(model => model.province)
+        </div>
+        </td>
+        </tr>
+
+        <tr>
+        <th class="org-detail">
+        <div class="editor-label">
+            Country: 
+        </div>
+        </th>
+        <td class="data">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.country)
+            @Html.ValidationMessageFor(model => model.country)
+        </div>
+        </td>
+        </tr>
+
+        <tr>
+        <th class="org-detail">
+        <div class="editor-label">
+            Postal Code: 
+        </div>
+        </th>
+        <td class="data">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.postalCode)
+            @Html.ValidationMessageFor(model => model.postalCode)
+        </div>
+        </td>
+        </tr>
+
+        <tr>
+        <th class="add">
+            <input type="submit" id="submit" value="Add Business" hidden="hidden"/>  
+        </th>
+        </tr>
+
+        <input type="hidden" name="latitude" id="latitude" value=""/>
+        <input type="hidden" name="longitude" id="longitude" value=""/>
+
+        </table>
+        </div>                
+        </div>
+    
+    </fieldset>
+       
+}
+
+<div class="add-cont">
+<input class="viewMap" type="submit" value="View Map" onclick="initializeMap()" />
+<b class="loc">Map Location Verification</b>
+
+
+<div id="googleMap" class="addMap" style="width:400px;height:300px;"></div>
+<div class="check">
+<input type="checkbox" id="checkbox" hidden="hidden" onchange="initializeSubmit()"/>
+</div>
+<b id="verify" class="box" hidden="hidden">Map Verified</b>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

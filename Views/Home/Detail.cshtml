@@ -1,0 +1,164 @@
+﻿@model MvcApplication2.Organization
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/maps.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAJGpIecodaK-ym4xP9uUd2pEvgrbtcDhs&sensor=false"></script>
+
+<fieldset>
+
+    <div class="field">
+    
+    <div class="table-responsive table-detail">
+    <table class="table-detail table">
+    
+    <tr>
+    <th class="org-detail">
+    <div class="display-label">
+         Company Name:
+    </div>
+    </th>
+    <td class="data">
+        <div class="display-field">
+        @Html.DisplayFor(model => model.companyName)
+    </div>
+    </td>
+    </tr>
+
+    <tr>
+    <th class="lastName">
+    <div class="display-label">
+         Contact Last Name:
+    </div>
+    </th>
+        <td class="data">
+            <div class="display-field">
+        @Html.DisplayFor(model => model.lastName)
+    </div>
+        </td>
+    </tr> 
+
+    <tr>
+    <th class="firstName">
+    <div class="display-label">
+         Contact First Name: 
+    </div>
+    </th>
+        <td class="data">
+            <div class="display-field">
+        @Html.DisplayFor(model => model.firstName)
+    </div>
+        </td>
+    </tr>
+
+    <tr>
+    <th class="contact">
+    <div class="display-label">
+         Contact Phone:
+    </div>
+    </th>
+        <td class="data">
+            <div class="display-field">
+        @Html.DisplayFor(model => model.phone)
+    </div>
+        </td>
+    </tr>
+
+    <tr>
+    <th class="address">
+    <div class="display-label">
+         Street Address:
+    </div>
+    </th>
+        <td class="data">
+            <div class="display-field">
+        @Html.DisplayFor(model => model.address)
+    </div>
+        </td>
+    </tr>
+
+    <tr>
+    <th class="city">
+    <div class="display-label">
+         City:
+    </div>
+    </th>
+        <td class="data">
+            <div class="display-field">
+        @Html.DisplayFor(model => model.city)
+    </div>
+        </td>
+    </tr>
+
+    <tr>
+    <th class="province">
+    <div class="display-label">
+         Province/State:
+    </div>
+    </th>
+        <td class="data">
+            <div class="display-field">
+        @Html.DisplayFor(model => model.province)
+    </div>
+        </td>
+    </tr>
+
+    <tr>
+    <th class="country">
+    <div class="display-label">
+         Country:
+    </div>
+    </th>
+        <td class="data">
+            <div class="display-field">
+        @Html.DisplayFor(model => model.country)
+    </div>
+        </td>
+    </tr>
+
+    <tr>
+    <th class="postalCode">
+    <div class="display-label">
+         Postal Code:
+    </div>
+    </th>
+        <td class="data">
+            <div class="display-field">
+        @Html.DisplayFor(model => model.postalCode)
+    </div>
+        </td>
+    </tr>
+    
+    </table>
+    </div>
+    </div>
+
+    <div class="info">
+    
+        
+    <div class="display-label" hidden="hidden">
+         @Html.DisplayNameFor(model => model.latitude)
+    </div>
+    <div class="display-field" id="latitude" hidden="hidden">
+        @Html.DisplayFor(model => model.latitude)
+    </div>
+
+    <div class="display-label" hidden="hidden">
+         @Html.DisplayNameFor(model => model.longitude)
+    </div>
+    <div class="display-field" id="longitude" hidden="hidden">
+        @Html.DisplayFor(model => model.longitude)
+    </div>
+    
+    </div>
+
+
+</fieldset>
+
+
+<div id="googleMap" class="googleMap" style="width:400px;height:300px;"></div>
+
+
+
+<script type="text/javascript">google.maps.event.addDomListener(window, 'load', initialize)</script>
